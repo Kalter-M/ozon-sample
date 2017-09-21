@@ -1,0 +1,20 @@
+<coordinator-app name="ozon_sample"
+                 start="2017-09-21T02:00Z"
+                 end="2017-09-22T02:00Z"
+                 timezone="Europe/Moscow"
+                 xmlns="uri:oozie:coordinator:0.4"
+                 xmlns:sla="uri:oozie:sla:0.2">
+    <action>
+        <workflow>
+            <app-path>${WF_APPLICATION_PATH}</app-path>
+        </workflow>
+        <sla:info>
+            <sla:nominal-time>${coord:nominalTime()}</sla:nominal-time>
+            <sla:should-start>${1 * DAYS}</sla:should-start>
+            <sla:should-end>${2 * DAYS}</sla:should-end>
+            <sla:max-duration>${3 * DAYS}</sla:max-duration>
+            <sla:alert-events>start_miss,end_miss,duration_miss</sla:alert-events>
+            <sla:alert-contact>ivanbrusentsev@gmail.com</sla:alert-contact>
+        </sla:info>
+    </action>
+</coordinator-app>
